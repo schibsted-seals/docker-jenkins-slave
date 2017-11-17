@@ -26,11 +26,14 @@ MAINTAINER Michal Schott <schott.michal@gmail.com>
 
 USER root
 
-RUN apt-get update -qq && \
-    apt-get upgrade -qq -y && \
-    apt-get install -y -qq \
+RUN apt-get -qq update 2>&1 >/dev/null && \
+    apt-get -qq upgrade -y 2>&1 >/dev/null && \
+    apt-get install -y -qq 2>&1 >/dev/null \
       build-essential \
+      python-pip \
       && \
-    apt-get clean
+    apt-get clean 2>&1 >/dev/null && \
+    pip install 2>&1 >/dev/null \
+      awscli
 
 USER jenkins

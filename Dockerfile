@@ -34,6 +34,8 @@ RUN apt-get -qq update 2>&1 >/dev/null && \
       && \
     apt-get clean 2>&1 >/dev/null && \
     pip install 2>&1 >/dev/null \
-      awscli
+      awscli \
+      ansi2html \
+    ;
 
 USER jenkins

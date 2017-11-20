@@ -30,9 +30,12 @@ RUN apt-get -qq update 2>&1 >/dev/null && \
     apt-get -qq upgrade -y 2>&1 >/dev/null && \
     apt-get install -y -qq 2>&1 >/dev/null \
       build-essential \
+      mongo-tools \
+      mongodb-clients \
       python-pip \
       && \
     apt-get clean 2>&1 >/dev/null && \
+    rm -rf /var/cache/apt/ /var/lib/apt/ 2>&1 >/dev/null && \
     pip install 2>&1 >/dev/null \
       awscli \
       ansi2html \
